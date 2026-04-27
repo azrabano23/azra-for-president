@@ -1,0 +1,2232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AZRA · FOR PRESIDENT · RSVP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;700;800;900&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500;700&family=Archivo:wght@400;500;700;900&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --cream: #F1E9CF;
+        --cream-light: #F7F0D8;
+        --cream-warm: #EADFBE;
+        --ink: #0F0D0A;
+        --ink-soft: #2A251E;
+        --red: #E63223;
+        --red-deep: #B3241A;
+        --yellow: #FFDD2E;
+        --blue: #1F4FDD;
+        --muted: #7A725F;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+        background: var(--cream);
+        color: var(--ink);
+        font-family: 'Archivo', system-ui, sans-serif;
+        font-weight: 400;
+        line-height: 1.4;
+        overflow-x: hidden;
+        position: relative;
+    }
+    body::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 200;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.06 0 0 0 0 0.05 0 0 0 0 0.04 0 0 0 0.15 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        opacity: 0.5;
+        mix-blend-mode: multiply;
+    }
+    ::selection { background: var(--yellow); color: var(--ink); }
+
+    /* ==================== TOP BAR ==================== */
+    .topbar {
+        position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+        background: var(--ink); color: var(--cream);
+        padding: 10px 24px;
+        display: flex; justify-content: space-between; align-items: center;
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+        border-bottom: 2px solid var(--red);
+    }
+    .topbar-brand { display: flex; align-items: center; gap: 10px; font-weight: 700; }
+    .topbar-brand .dot {
+        width: 8px; height: 8px; background: var(--red); border-radius: 50%;
+        animation: pulse 1.2s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.7); } }
+    .topbar-right { color: var(--yellow); font-weight: 500; }
+    .topbar-nav { display: flex; gap: 22px; }
+    .topbar-nav a { color: var(--cream); text-decoration: none; font-size: 10px; transition: color 0.2s; }
+    .topbar-nav a:hover { color: var(--yellow); }
+    @media (max-width: 900px) { .topbar-nav { display: none; } }
+
+    /* ==================== HERO ==================== */
+    .hero {
+        min-height: 100vh;
+        padding: 70px 32px 40px;
+        position: relative; overflow: hidden;
+        border-bottom: 4px solid var(--ink);
+    }
+    .hero::after {
+        content: ''; position: absolute; inset: 0;
+        background-image:
+            linear-gradient(rgba(15,13,10,0.04) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(15,13,10,0.04) 1px, transparent 1px);
+        background-size: 50px 50px;
+        pointer-events: none; z-index: 0;
+    }
+    .hero-inner { position: relative; z-index: 2; }
+    .hero-top {
+        display: flex; justify-content: space-between; align-items: center;
+        padding: 16px 0; border-bottom: 2px solid var(--ink);
+        margin-bottom: 30px; flex-wrap: wrap; gap: 16px;
+    }
+    .hero-top-left { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+    .hero-tag {
+        background: var(--ink); color: var(--cream);
+        padding: 6px 12px;
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500;
+    }
+    .hero-tag.red { background: var(--red); color: var(--cream); }
+    .hero-tag.yellow { background: var(--yellow); color: var(--ink); }
+
+    .hero-title-wrap { position: relative; margin: 30px 0; }
+    .hero-title {
+        font-family: 'Unbounded', sans-serif;
+        font-weight: 900;
+        font-size: clamp(90px, 22vw, 340px);
+        line-height: 0.78;
+        letter-spacing: -0.04em;
+        text-transform: uppercase;
+        position: relative; z-index: 3;
+    }
+    .hero-title .az, .hero-title .ra, .hero-title .bano { display: inline-block; }
+    .hero-title .az { animation: dropIn 0.9s cubic-bezier(0.16,1,0.3,1) 0.1s both; }
+    .hero-title .ra { color: var(--red); animation: dropIn 0.9s cubic-bezier(0.16,1,0.3,1) 0.25s both; }
+    .hero-title .bano { display: block; animation: dropIn 0.9s cubic-bezier(0.16,1,0.3,1) 0.45s both; }
+    @keyframes dropIn { from { transform: translateY(60px) rotate(-2deg); opacity: 0; } to { transform: translateY(0) rotate(0); opacity: 1; } }
+
+    .vote-sticker {
+        position: absolute; top: 10px; right: 4%;
+        width: 180px; height: 180px;
+        background: var(--yellow); border: 3px solid var(--ink);
+        border-radius: 50%;
+        display: flex; align-items: center; justify-content: center; flex-direction: column;
+        transform: rotate(14deg); z-index: 5;
+        box-shadow: 5px 5px 0 var(--ink);
+        animation: wobble 4s ease-in-out infinite;
+    }
+    @keyframes wobble { 0%,100% { transform: rotate(14deg); } 50% { transform: rotate(10deg); } }
+    .vote-sticker .vote-top {
+        font-family: 'Unbounded', sans-serif; font-weight: 800;
+        font-size: 42px; line-height: 0.9; letter-spacing: -0.03em;
+    }
+    .vote-sticker .vote-bot {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 10px; font-weight: 700; letter-spacing: 0.15em;
+        margin-top: 8px; text-align: center; line-height: 1.2;
+    }
+    @media (max-width: 900px) {
+        .vote-sticker { width: 110px; height: 110px; top: -5px; }
+        .vote-sticker .vote-top { font-size: 24px; }
+        .vote-sticker .vote-bot { font-size: 8px; }
+    }
+
+    .hero-bottom {
+        display: grid; grid-template-columns: 1.3fr 1fr;
+        gap: 40px; margin-top: 40px;
+        border-top: 2px solid var(--ink); padding-top: 30px;
+    }
+    .hero-subtitle {
+        font-family: 'Archivo', sans-serif; font-weight: 500;
+        font-size: clamp(18px, 2.2vw, 26px); line-height: 1.2;
+    }
+    .hero-subtitle em {
+        font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400;
+        font-size: 1.15em;
+    }
+    .hero-subtitle .slash-v {
+        display: inline-block; background: var(--red); color: var(--cream);
+        padding: 2px 10px; transform: rotate(-2deg); margin: 0 2px;
+    }
+    .hero-creds {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em;
+        line-height: 1.9; text-align: right;
+    }
+    .hero-creds .red { color: var(--red); font-weight: 700; }
+    @media (max-width: 760px) {
+        .hero-bottom { grid-template-columns: 1fr; }
+        .hero-creds { text-align: left; }
+    }
+    .stamp {
+        display: inline-block;
+        border: 3px solid var(--red); color: var(--red);
+        padding: 6px 14px;
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+        transform: rotate(-4deg); background: transparent;
+    }
+
+    /* ==================== TICKER ==================== */
+    .ticker {
+        background: var(--yellow);
+        border-top: 4px solid var(--ink); border-bottom: 4px solid var(--ink);
+        padding: 16px 0; overflow: hidden; position: relative;
+    }
+    .ticker-track {
+        display: flex; white-space: nowrap;
+        animation: marquee 55s linear infinite;
+        font-family: 'Unbounded', sans-serif;
+        font-weight: 700; font-size: 28px; letter-spacing: -0.01em;
+        text-transform: uppercase;
+    }
+    .ticker-track > span { display: inline-flex; align-items: center; }
+    .ticker-item { padding: 0 32px; display: inline-flex; align-items: center; gap: 20px; }
+    .ticker-item .sep {
+        display: inline-block; width: 14px; height: 14px;
+        background: var(--red); transform: rotate(45deg);
+    }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ==================== MANIFESTO ==================== */
+    .manifesto {
+        padding: 110px 32px 80px;
+        position: relative; border-bottom: 4px solid var(--ink);
+    }
+    .manifesto::before {
+        content: 'PROLOGUE'; position: absolute; top: 30px; right: 32px;
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 11px; letter-spacing: 0.2em; color: var(--red); font-weight: 700;
+    }
+    .manifesto-inner { max-width: 1400px; margin: 0 auto; }
+    .mf-line-1, .mf-line-2 {
+        font-family: 'Unbounded', sans-serif; font-weight: 900;
+        font-size: clamp(40px, 7vw, 120px); line-height: 0.88;
+        letter-spacing: -0.03em; text-transform: uppercase;
+    }
+    .mf-line-1 .strike {
+        text-decoration: line-through; text-decoration-thickness: 6px;
+        text-decoration-color: var(--red); color: var(--muted);
+    }
+    .mf-line-2 { margin-top: 20px; padding-left: 6vw; }
+    .mf-line-2 .dblock {
+        display: inline-block; background: var(--ink); color: var(--cream);
+        padding: 0 0.1em; margin-right: 4px;
+    }
+    .mf-line-3 {
+        font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400;
+        font-size: clamp(32px, 5vw, 72px); line-height: 1;
+        letter-spacing: -0.02em; margin-top: 30px; padding-left: 12vw;
+    }
+    .mf-line-3 .red { color: var(--red); }
+
+    .mf-bridge {
+        margin-top: 80px; padding: 30px 0 0;
+        border-top: 2px solid var(--ink);
+        display: grid; grid-template-columns: 1fr auto; gap: 40px;
+        align-items: end;
+    }
+    @media (max-width: 760px) { .mf-bridge { grid-template-columns: 1fr; } }
+    .mf-bridge-left {
+        font-family: 'Instrument Serif', serif; font-style: italic;
+        font-size: clamp(20px, 2.8vw, 32px); line-height: 1.25;
+        max-width: 700px;
+    }
+    .mf-bridge-left .arrow { color: var(--red); font-weight: 700; font-style: normal; }
+    .signed-hand {
+        font-family: 'Caveat', cursive;
+        font-size: 52px; color: var(--red);
+        transform: rotate(-4deg); line-height: 1;
+        padding: 0 20px 6px; border-bottom: 2px solid var(--ink);
+    }
+
+    /* ==================== ACT DIVIDER ==================== */
+    .act-divider {
+        background: var(--ink); color: var(--cream);
+        padding: 80px 32px;
+        border-bottom: 4px solid var(--red);
+        position: relative; overflow: hidden;
+    }
+    .act-divider::before {
+        content: ''; position: absolute; inset: 0;
+        background-image:
+            linear-gradient(rgba(230,50,35,0.06) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(230,50,35,0.06) 1px, transparent 1px);
+        background-size: 60px 60px; pointer-events: none;
+    }
+    .act-divider-inner { position: relative; z-index: 2; max-width: 1400px; margin: 0 auto; }
+    .act-kicker {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase;
+        color: var(--yellow); font-weight: 700;
+        margin-bottom: 30px;
+        display: flex; align-items: center; gap: 16px;
+    }
+    .act-kicker::before, .act-kicker::after {
+        content: ''; height: 2px; background: var(--red); flex: 1;
+    }
+    .act-big {
+        font-family: 'Unbounded', sans-serif; font-weight: 900;
+        font-size: clamp(80px, 16vw, 240px);
+        line-height: 0.82; letter-spacing: -0.05em;
+        text-transform: uppercase; text-align: center;
+        color: transparent; -webkit-text-stroke: 3px var(--cream);
+    }
+    .act-big .filled { color: var(--red); -webkit-text-stroke: 0; }
+    .act-big em {
+        font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400;
+        color: var(--yellow); -webkit-text-stroke: 0;
+        text-transform: none; letter-spacing: -0.02em;
+    }
+    .act-sub {
+        font-family: 'Instrument Serif', serif; font-style: italic;
+        font-size: clamp(22px, 3.2vw, 36px); line-height: 1.25;
+        max-width: 900px; margin: 40px auto 0;
+        text-align: center; color: var(--cream);
+        letter-spacing: -0.01em;
+    }
+    .act-sub .hl {
+        background: var(--yellow); color: var(--ink); padding: 0 0.15em;
+        font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: 0.78em;
+        font-style: normal;
+    }
+
+    /* ==================== STORY / ACT I ==================== */
+    .story {
+        padding: 100px 32px;
+        background: var(--cream-warm);
+        border-bottom: 4px solid var(--ink);
+        position: relative;
+    }
+    .story::before {
+        content: ''; position: absolute; inset: 0;
+        background-image: repeating-linear-gradient(
+            transparent 0, transparent 31px,
+            rgba(230,50,35,0.06) 31px, rgba(230,50,35,0.06) 32px
+        );
+        pointer-events: none;
+    }
+    .story-inner { position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; }
+
+    .story-opening {
+        margin-bottom: 100px;
+        padding-bottom: 60px;
+        border-bottom: 3px dashed var(--ink);
+    }
+    .story-opening-lead {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+        color: var(--red); font-weight: 700;
+        margin-bottom: 20px;
+    }
+    .story-opening h2 {
+        font-family: 'Unbounded', sans-serif; font-weight: 900;
+        font-size: clamp(40px, 7vw, 96px);
+        line-height: 0.95; letter-spacing: -0.04em;
+        text-transform: uppercase;
+    }
+    .story-opening h2 em {
+        font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400;
+        color: var(--red); text-transform: none;
+    }
+
+    .chapter {
+        display: grid;
+        grid-template-columns: 180px 1fr;
+        gap: 40px;
+        margin-bottom: 100px;
+        position: relative;
+    }
+    @media (max-width: 900px) {
+        .chapter { grid-template-columns: 1fr; gap: 20px; }
+    }
+
+    .chapter-rail {
+        position: relative;
+    }
+    .chapter-rail-sticky {
+        position: sticky;
+        top: 90px;
+    }
+    .ch-num {
+        font-family: 'Unbounded', sans-serif; font-weight: 900;
+        font-size: 120px; line-height: 0.9;
+        color: transparent; -webkit-text-stroke: 3px var(--red);
+        letter-spacing: -0.05em;
+    }
+    .ch-label {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+        color: var(--ink); font-weight: 700;
+        margin-top: 10px;
+    }
+    @media (max-width: 900px) {
+        .ch-num { font-size: 72px; }
+    }
+
+    .chapter-body h3 {
+        font-family: 'Unbounded', sans-serif; font-weight: 800;
+        font-size: clamp(32px, 4.5vw, 58px);
+        line-height: 0.98; letter-spacing: -0.03em;
+        text-transform: uppercase;
+        margin-bottom: 28px;
+    }
+    .chapter-body h3 em {
+        font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400;
+        color: var(--red); text-transform: none;
+    }
+    .chapter-body p {
+        font-size: 18px; line-height: 1.6;
+        margin-bottom: 20px; color: var(--ink-soft);
+        max-width: 640px;
+    }
+    .chapter-body p strong {
+        color: var(--ink); font-weight: 700;
+    }
+    .chapter-body p .name {
+        background: var(--yellow); padding: 0 6px;
+        font-weight: 700; color: var(--ink);
+    }
+    .chapter-body p .name-red {
+        color: var(--red); font-weight: 700;
+    }
+
+    .story-quote {
+        font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400;
+        font-size: clamp(28px, 4.5vw, 52px);
+        line-height: 1.15; letter-spacing: -0.02em;
+        color: var(--ink);
+        padding: 30px 0 30px 30px;
+        margin: 30px 0;
+        border-left: 6px solid var(--red);
+        max-width: 720px;
+    }
+    .story-quote.big {
+        font-size: clamp(36px, 6vw, 76px);
+        line-height: 1.05;
+    }
+
+    /* Polaroid */
+    .polaroid {
+        display: inline-block;
+        background: #fafaf3;
+        padding: 12px 12px 50px;
+        box-shadow: 4px 6px 0 rgba(15,13,10,0.15), 8px 12px 0 var(--ink);
+        border: 1px solid rgba(0,0,0,0.08);
+        position: relative;
+        margin: 20px 0;
+        max-width: 320px;
+    }
+    .polaroid-tape {
+        position: absolute;
+        top: -16px; left: 50%;
+        transform: translateX(-50%) rotate(-3deg);
+        width: 100px; height: 28px;
+        background: rgba(255, 221, 46, 0.7);
+        border-left: 1px dashed rgba(15,13,10,0.2);
+        border-right: 1px dashed rgba(15,13,10,0.2);
+    }
+    .polaroid-img {
+        background: linear-gradient(135deg, #3a2f1f 0%, #5c4a2d 40%, #3a2f1f 100%);
+        aspect-ratio: 1;
+        display: flex; align-items: center; justify-content: center;
+        color: var(--cream);
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
+        text-align: center; padding: 20px;
+        position: relative;
+    }
+    .polaroid-img::after {
+        content: '';
+        position: absolute; inset: 0;
+        background-image: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.1), transparent 50%);
+    }
+    .polaroid-caption {
+        position: absolute;
+        bottom: 12px; left: 0; right: 0;
+        font-family: 'Caveat', cursive;
+        font-size: 22px; color: var(--ink);
+        text-align: center; line-height: 1;
+    }
+    .polaroid.tilt-l { transform: rotate(-3deg); }
+    .polaroid.tilt-r { transform: rotate(3deg); }
+
+    .polaroid-cluster {
+        display: flex; gap: 30px; flex-wrap: wrap;
+        margin: 30px 0;
+    }
+
+    /* Wins list inside story */
+    .wins {
+        margin: 30px 0;
+        border-top: 2px solid var(--ink);
+        border-bottom: 2px solid var(--ink);
+        padding: 8px 0;
+        max-width: 640px;
+    }
+    .win-row {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        padding: 14px 0;
+        border-bottom: 1px dashed rgba(15,13,10,0.2);
+        align-items: center;
+    }
+    .win-row:last-child { border-bottom: 0; }
+    .win-name {
+        font-family: 'Unbounded', sans-serif; font-weight: 700;
+        font-size: 15px; letter-spacing: -0.01em;
+        text-transform: uppercase;
+    }
+    .win-name em {
+        font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400;
+        color: var(--red); text-transform: none;
+        font-size: 1.15em;
+    }
+    .win-result {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+        background: var(--ink); color: var(--cream);
+        padding: 4px 10px; font-weight: 700;
+        white-space: nowrap;
+    }
+    .win-result.red { background: var(--red); }
+    .win-result.yellow { background: var(--yellow); color: var(--ink); }
+
+    /* Story closer */
+    .story-closer {
+        margin-top: 60px;
+        padding: 60px 40px;
+        background: var(--ink);
+        color: var(--cream);
+        border: 3px solid var(--red);
+        transform: rotate(-0.5deg);
+        box-shadow: 10px 10px 0 var(--red);
+    }
+    .story-closer-lead {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+        color: var(--yellow); font-weight: 700;
+        margin-bottom: 20px;
+    }
+    .story-closer h3 {
+        font-family: 'Unbounded', sans-serif; font-weight: 900;
+        font-size: clamp(32px, 5.5vw, 72px);
+        line-height: 0.95; letter-spacing: -0.03em;
+        text-transform: uppercase;
+        margin-bottom: 24px;
+        color: var(--cream);
+    }
+    .story-closer h3 em {
+        font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400;
+        color: var(--yellow); text-transform: none;
+    }
+    .story-closer p {
+        font-family: 'Instrument Serif', serif; font-style: italic;
+        font-size: clamp(20px, 2.6vw, 28px);
+        line-height: 1.3; max-width: 800px; color: var(--cream);
+    }
+
+    /* ==================== SECTION HEADER ==================== */
+    .sec-header {
+        display: flex; align-items: flex-end; gap: 24px;
+        margin-bottom: 50px;
+        border-bottom: 3px solid var(--ink); padding-bottom: 20px;
+        flex-wrap: wrap;
+    }
+    .sec-label {
+        background: var(--ink); color: var(--cream);
+        padding: 8px 16px;
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 11px; letter-spacing: 0.15em; font-weight: 700; text-transform: uppercase;
+    }
+    .sec-label.red { background: var(--red); }
+    .sec-title {
+        font-family: 'Unbounded', sans-serif; font-weight: 900;
+        font-size: clamp(32px, 5.5vw, 82px);
+        line-height: 0.9; letter-spacing: -0.03em; text-transform: uppercase;
+        flex: 1;
+    }
+    .sec-title em {
+        font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400;
+        color: var(--red); text-transform: none; letter-spacing: -0.01em;
+    }
+
+    /* ==================== RECEIPTS ==================== */
+    .receipts {
+        padding: 100px 32px;
+        border-bottom: 4px solid var(--ink);
+        background: var(--cream-light);
+    }
+    .receipts-intro {
+        font-family: 'Instrument Serif', serif; font-style: italic;
+        font-size: clamp(20px, 2.8vw, 32px);
+        line-height: 1.3; max-width: 820px;
+        margin-bottom: 50px; letter-spacing: -0.01em;
+    }
+    .receipts-intro .hl-y {
+        background: var(--yellow); padding: 0 0.15em;
+        font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: 0.75em;
+        font-style: normal;
+    }
+
+    .receipts-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    @media (max-width: 760px) { .receipts-grid { grid-template-columns: 1fr; } }
+    .receipt {
+        background: var(--cream); border: 3px solid var(--ink);
+        padding: 28px; position: relative;
+        box-shadow: 6px 6px 0 var(--ink);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .receipt:nth-child(1) { transform: rotate(-1.2deg); }
+    .receipt:nth-child(2) { transform: rotate(1deg); }
+    .receipt:nth-child(3) { transform: rotate(0.6deg); }
+    .receipt:nth-child(4) { transform: rotate(-0.8deg); }
+    .receipt:nth-child(5) { transform: rotate(1.4deg); grid-column: 1 / -1; }
+    .receipt:hover { transform: rotate(0) translateY(-4px); box-shadow: 10px 10px 0 var(--red); }
+    .receipt::before {
+        content: ''; position: absolute; top: -14px; left: 50%;
+        transform: translateX(-50%) rotate(-4deg);
+        width: 100px; height: 24px;
+        background: rgba(255, 221, 46, 0.7);
+        border-left: 1px dashed rgba(15,13,10,0.15);
+        border-right: 1px dashed rgba(15,13,10,0.15);
+    }
+    .receipt:nth-child(2)::before { transform: translateX(-50%) rotate(5deg); background: rgba(230,50,35,0.25); }
+    .receipt:nth-child(4)::before { transform: translateX(-50%) rotate(3deg); background: rgba(31,79,221,0.2); }
+    .receipt-head {
+        display: flex; justify-content: space-between; align-items: flex-start;
+        margin-bottom: 16px; padding-bottom: 12px;
+        border-bottom: 2px dashed var(--ink);
+    }
+    .receipt-exh {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+        background: var(--ink); color: var(--cream); padding: 5px 10px;
+    }
+    .receipt-num {
+        font-family: 'Unbounded', sans-serif; font-weight: 900;
+        font-size: clamp(56px, 8vw, 100px);
+        line-height: 0.9; letter-spacing: -0.06em; color: var(--red);
+        margin: 8px 0;
+    }
+    .receipt-num .unit {
+        font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400;
+        font-size: 0.38em; color: var(--ink); letter-spacing: 0;
+    }
+    .receipt-title {
+        font-family: 'Unbounded', sans-serif; font-weight: 700;
+        font-size: 20px; line-height: 1.15; letter-spacing: -0.02em;
+        text-transform: uppercase; margin-bottom: 12px;
+    }
+    .receipt-title em {
+        font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400;
+        color: var(--red); text-transform: none;
+    }
+    .receipt-body { font-size: 14px; line-height: 1.55; }
+
+    /* ==================== VENTURE LAB ROSTER ==================== */
+    .roster {
+        padding: 100px 32px;
+        border-bottom: 4px solid var(--ink);
+        background: var(--ink); color: var(--cream);
+    }
+    .roster .sec-label { background: var(--yellow); color: var(--ink); }
+    .roster .sec-title { color: var(--cream); }
+    .roster .sec-title em { color: var(--yellow); }
+    .roster .sec-header { border-bottom-color: var(--cream); }
+
+    .roster-intro {
+        font-family: 'Instrument Serif', serif; font-style: italic;
+        font-size: clamp(20px, 2.8vw, 32px); line-height: 1.3;
+        max-width: 900px; margin-bottom: 40px; letter-spacing: -0.01em;
+    }
+    .roster-intro .yellow-hl {
+        background: var(--yellow); color: var(--ink); padding: 0 0.15em;
+        font-style: normal; font-family: 'Unbounded', sans-serif;
+        font-weight: 700; font-size: 0.75em;
+    }
+
+    .team-stack { border-top: 2px solid var(--cream); }
+    .team {
+        display: grid;
+        grid-template-columns: 60px 1.2fr 2fr 140px;
+        gap: 30px; padding: 26px 0;
+        border-bottom: 2px solid #3a352d;
+        align-items: start;
+        transition: background 0.25s ease, padding 0.25s ease;
+    }
+    .team:hover { background: linear-gradient(90deg, rgba(255,221,46,0.08), transparent); padding-left: 16px; }
+    .team-id {
+        font-family: 'Unbounded', sans-serif; font-weight: 900;
+        font-size: 36px; color: var(--red); line-height: 1; letter-spacing: -0.04em;
+    }
+    .team-name {
+        font-family: 'Unbounded', sans-serif; font-weight: 800;
+        font-size: 32px; text-transform: uppercase;
+        line-height: 1; letter-spacing: -0.03em; color: var(--cream);
+    }
+    .team-name em {
+        font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400;
+        color: var(--yellow); text-transform: none; letter-spacing: -0.01em;
+    }
+    .team-founders {
+        margin-top: 10px;
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 11px; color: #a89d85; letter-spacing: 0.08em;
+    }
+    .team-desc { font-size: 14px; line-height: 1.55; color: #d4cab0; padding-top: 6px; }
+    .team-pill {
+        background: var(--red); color: var(--cream);
+        padding: 8px 14px;
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+        text-align: center; border-radius: 100px; white-space: nowrap;
+    }
+    @media (max-width: 900px) {
+        .team { grid-template-columns: 1fr; gap: 12px; }
+        .team-pill { justify-self: start; }
+    }
+
+    /* ==================== ENGINEERING BRIDGE ==================== */
+    .engineering {
+        padding: 100px 32px;
+        border-bottom: 4px solid var(--ink);
+        background: var(--yellow);
+        position: relative; overflow: hidden;
+    }
+    .engineering::before {
+        content: ''; position: absolute; inset: 0;
+        background-image:
+            linear-gradient(rgba(15,13,10,0.04) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(15,13,10,0.04) 1px, transparent 1px);
+        background-size: 40px 40px;
+        pointer-events: none;
+    }
+    .engineering > * { position: relative; }
+    .engineering .sec-label { background: var(--ink); color: var(--yellow); }
+    .engineering .sec-header { border-bottom-color: var(--ink); }
+
+    .eng-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        gap: 50px; align-items: start;
+    }
+    @media (max-width: 900px) { .eng-grid { grid-template-columns: 1fr; } }
+
+    .eng-lead {
+        font-family: 'Unbounded', sans-serif; font-weight: 800;
+        font-size: clamp(28px, 4vw, 44px);
+        line-height: 1.05; letter-spacing: -0.03em;
+        text-transform: uppercase;
+        margin-bottom: 30px;
+    }
+    .eng-lead em {
+        font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400;
+        color: var(--red); text-transform: none;
+    }
+    .eng-body p {
+        font-size: 16px; line-height: 1.6; margin-bottom: 18px; color: var(--ink);
+    }
+    .eng-body strong { font-weight: 700; background: var(--ink); color: var(--yellow); padding: 0 4px; }
+
+    .eng-list {
+        border: 3px solid var(--ink); background: var(--cream);
+        padding: 24px;
+    }
+    .eng-list-title {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+        color: var(--red); font-weight: 700;
+        margin-bottom: 16px; padding-bottom: 12px;
+        border-bottom: 2px dashed var(--ink);
+    }
+    .eng-item {
+        display: grid; grid-template-columns: 24px 1fr;
+        gap: 14px; padding: 14px 0;
+        border-bottom: 1px dashed rgba(15,13,10,0.2);
+    }
+    .eng-item:last-child { border-bottom: 0; }
+    .eng-item-num {
+        font-family: 'Unbounded', sans-serif; font-weight: 900;
+        font-size: 16px; color: var(--red); line-height: 1;
+    }
+    .eng-item-text {
+        font-size: 14px; line-height: 1.4;
+    }
+    .eng-item-text strong {
+        font-weight: 700; background: transparent; color: var(--ink);
+    }
+
+    /* ==================== PLATFORM / AGENDA ==================== */
+    .platform {
+        padding: 100px 32px;
+        border-bottom: 4px solid var(--ink);
+        background: var(--cream-light);
+        position: relative;
+    }
+    .platform::before {
+        content: 'PLATFORM ✦ AGENDA ✦ MANDATE ✦ ';
+        position: absolute;
+        top: 18px; left: 0; right: 0;
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 10px; letter-spacing: 0.4em;
+        color: rgba(230,50,35,0.25);
+        white-space: nowrap; overflow: hidden;
+        font-weight: 700;
+        pointer-events: none;
+    }
+    .platform-intro {
+        font-family: 'Instrument Serif', serif; font-style: italic;
+        font-size: clamp(20px, 2.8vw, 32px);
+        line-height: 1.3; max-width: 900px;
+        margin-bottom: 50px; letter-spacing: -0.01em;
+    }
+    .platform-intro .hl-y {
+        background: var(--yellow); padding: 0 0.15em;
+        font-family: 'Unbounded', sans-serif; font-weight: 700;
+        font-size: 0.75em; font-style: normal;
+    }
+
+    .plank-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+    @media (max-width: 900px) { .plank-grid { grid-template-columns: 1fr; } }
+
+    .plank {
+        background: var(--cream);
+        border: 3px solid var(--ink);
+        padding: 32px;
+        position: relative;
+        box-shadow: 8px 8px 0 var(--ink);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        display: grid;
+        grid-template-columns: 80px 1fr;
+        gap: 24px;
+    }
+    .plank:hover {
+        transform: translate(-3px, -3px);
+        box-shadow: 12px 12px 0 var(--red);
+    }
+    @media (max-width: 600px) { .plank { grid-template-columns: 1fr; gap: 14px; } }
+
+    .plank:nth-child(1) { transform: rotate(-0.4deg); }
+    .plank:nth-child(2) { transform: rotate(0.3deg); }
+    .plank:nth-child(3) { transform: rotate(0.5deg); }
+    .plank:nth-child(4) { transform: rotate(-0.3deg); }
+    .plank:nth-child(5) { transform: rotate(-0.5deg); }
+    .plank:nth-child(6) { transform: rotate(0.4deg); }
+    .plank:hover { transform: rotate(0) translate(-3px, -3px); }
+
+    .plank-rail {
+        border-right: 2px dashed var(--ink);
+        padding-right: 14px;
+    }
+    @media (max-width: 600px) {
+        .plank-rail { border-right: 0; border-bottom: 2px dashed var(--ink); padding-right: 0; padding-bottom: 12px; display: flex; align-items: baseline; gap: 16px; }
+    }
+
+    .plank-num {
+        font-family: 'Unbounded', sans-serif; font-weight: 900;
+        font-size: 64px; line-height: 0.85;
+        color: transparent; -webkit-text-stroke: 2px var(--red);
+        letter-spacing: -0.05em;
+    }
+    .plank-tag {
+        margin-top: 10px;
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+        color: var(--red); font-weight: 700;
+    }
+
+    .plank-body h3 {
+        font-family: 'Unbounded', sans-serif; font-weight: 800;
+        font-size: clamp(20px, 2.4vw, 28px);
+        line-height: 1.05; letter-spacing: -0.02em;
+        text-transform: uppercase;
+        margin-bottom: 14px;
+    }
+    .plank-body h3 em {
+        font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400;
+        color: var(--red); text-transform: none;
+    }
+
+    .plank-lead {
+        font-family: 'Instrument Serif', serif; font-style: italic;
+        font-size: 17px; line-height: 1.35;
+        margin-bottom: 14px; color: var(--ink);
+        padding-left: 12px;
+        border-left: 3px solid var(--yellow);
+    }
+
+    .plank-body > p {
+        font-size: 14.5px; line-height: 1.55;
+        color: var(--ink-soft);
+        margin-bottom: 18px;
+    }
+    .plank-body > p strong { color: var(--ink); font-weight: 700; }
+
+    .plank-tactics {
+        margin-top: 14px;
+        padding-top: 14px;
+        border-top: 1px dashed var(--ink);
+    }
+    .tactic {
+        display: grid;
+        grid-template-columns: 14px 1fr;
+        gap: 10px;
+        padding: 8px 0;
+        font-size: 13px; line-height: 1.45;
+        align-items: start;
+    }
+    .tactic strong { color: var(--ink); font-weight: 700; }
+    .tactic-dot {
+        width: 8px; height: 8px;
+        background: var(--red);
+        transform: rotate(45deg) translateY(4px);
+        display: inline-block;
+    }
+
+    /* Why-Me synthesis */
+    .why-me {
+        margin-top: 50px;
+        padding: 40px;
+        background: var(--ink); color: var(--cream);
+        border: 3px solid var(--red);
+        box-shadow: 10px 10px 0 var(--yellow);
+    }
+    .why-me-label {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase;
+        color: var(--yellow); font-weight: 700;
+        margin-bottom: 16px;
+        display: flex; align-items: center; gap: 14px;
+    }
+    .why-me-label::after {
+        content: ''; height: 2px; background: var(--red); flex: 1;
+    }
+    .why-me-title {
+        font-family: 'Unbounded', sans-serif; font-weight: 900;
+        font-size: clamp(28px, 4vw, 48px);
+        line-height: 1; letter-spacing: -0.03em;
+        text-transform: uppercase;
+        color: var(--cream);
+        margin-bottom: 30px;
+    }
+    .why-me-title em {
+        font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400;
+        color: var(--yellow); text-transform: none;
+    }
+    .why-me-grid {
+        border-top: 2px dashed #3a352d;
+    }
+    .why-row {
+        display: grid;
+        grid-template-columns: 1.1fr 1.4fr;
+        gap: 30px;
+        padding: 20px 0;
+        border-bottom: 2px dashed #3a352d;
+        align-items: baseline;
+    }
+    @media (max-width: 760px) {
+        .why-row { grid-template-columns: 1fr; gap: 6px; padding: 16px 0; }
+    }
+    .why-claim {
+        font-family: 'Unbounded', sans-serif; font-weight: 700;
+        font-size: clamp(15px, 1.8vw, 19px);
+        line-height: 1.15; letter-spacing: -0.02em;
+        text-transform: uppercase;
+        color: var(--cream);
+    }
+    .why-proof {
+        font-family: 'Instrument Serif', serif; font-style: italic;
+        font-size: clamp(15px, 1.7vw, 18px);
+        line-height: 1.4;
+        color: #d4cab0;
+    }
+    .why-proof::before {
+        content: '→ '; color: var(--red); font-style: normal; font-weight: 700;
+    }
+
+    /* ==================== SECTION TRANSITION ==================== */
+    .transition {
+        padding: 60px 32px;
+        background: var(--cream);
+        border-bottom: 4px solid var(--ink);
+        text-align: center;
+    }
+    .transition p {
+        font-family: 'Instrument Serif', serif; font-style: italic;
+        font-size: clamp(22px, 3.2vw, 38px);
+        line-height: 1.25; letter-spacing: -0.01em;
+        max-width: 1000px; margin: 0 auto;
+    }
+    .transition .arrow {
+        color: var(--red); font-weight: 700; font-style: normal;
+    }
+    .transition .hl {
+        background: var(--yellow); padding: 0 0.1em;
+        font-family: 'Unbounded', sans-serif; font-weight: 700;
+        font-size: 0.72em; font-style: normal;
+    }
+
+    /* ==================== TIME ==================== */
+    .time-sec {
+        padding: 100px 32px;
+        border-bottom: 4px solid var(--ink);
+        background: var(--cream); position: relative;
+    }
+    .time-sec::after {
+        content: ''; position: absolute; inset: 0;
+        background-image:
+            linear-gradient(rgba(31,79,221,0.05) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(31,79,221,0.05) 1px, transparent 1px);
+        background-size: 30px 30px;
+        pointer-events: none;
+    }
+    .time-sec > * { position: relative; z-index: 1; }
+    .time-grid {
+        display: grid; grid-template-columns: 1.4fr 1fr;
+        gap: 40px; align-items: start;
+    }
+    @media (max-width: 900px) { .time-grid { grid-template-columns: 1fr; } }
+    .chalkboard {
+        background: var(--ink); border: 3px solid var(--ink);
+        padding: 20px; position: relative;
+        box-shadow: 10px 10px 0 var(--red);
+    }
+    .cb-title {
+        display: flex; justify-content: space-between; align-items: center;
+        margin-bottom: 14px; padding-bottom: 12px;
+        border-bottom: 1px dashed #3a352d;
+    }
+    .cb-title .left {
+        font-family: 'Unbounded', sans-serif; font-weight: 800;
+        font-size: 16px; color: var(--cream); text-transform: uppercase;
+        letter-spacing: -0.01em;
+    }
+    .cb-title .right {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 10px; color: var(--yellow); letter-spacing: 0.12em;
+    }
+    .cal-header, .cal-row { display: grid; grid-template-columns: 44px repeat(5, 1fr); gap: 2px; }
+    .cal-header { margin-bottom: 4px; }
+    .cal-header div {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 9px; letter-spacing: 0.12em; color: #a89d85;
+        padding: 4px; text-transform: uppercase; text-align: center;
+    }
+    .cal-header div:first-child { text-align: left; }
+    .cal-time {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 9px; color: #5f574a;
+        text-align: right; padding-right: 6px;
+        height: 28px; display: flex; align-items: flex-start;
+        justify-content: flex-end; padding-top: 2px;
+    }
+    .cal-cell { height: 28px; background: #1a1611; border: 1px solid #2a2520; }
+    .cal-cls {
+        background: var(--red); color: var(--cream);
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 9px; font-weight: 700;
+        padding: 2px 5px; line-height: 1.2;
+        overflow: hidden; letter-spacing: 0.04em;
+    }
+    .cal-body { position: relative; }
+    .cal-free-stamp {
+        position: absolute; left: 50%; top: 45%;
+        transform: translate(-50%, -50%) rotate(-12deg);
+        font-family: 'Unbounded', sans-serif; font-weight: 900;
+        font-size: clamp(40px, 6vw, 72px); color: var(--yellow);
+        letter-spacing: -0.04em; pointer-events: none;
+        line-height: 0.9; text-align: center; z-index: 5;
+        white-space: nowrap;
+    }
+    .cal-free-stamp::before, .cal-free-stamp::after {
+        content: ''; position: absolute; left: -20px; right: -20px;
+        height: 6px; background: var(--yellow);
+    }
+    .cal-free-stamp::before { top: -10px; }
+    .cal-free-stamp::after { bottom: -10px; }
+    .cb-note {
+        margin-top: 14px;
+        font-family: 'Caveat', cursive;
+        font-size: 22px; color: var(--yellow);
+        line-height: 1.1; transform: rotate(-1deg);
+    }
+    .time-copy { padding: 10px 0; }
+    .time-head {
+        font-family: 'Unbounded', sans-serif; font-weight: 800;
+        font-size: clamp(28px, 4vw, 48px);
+        line-height: 1; letter-spacing: -0.03em; text-transform: uppercase;
+        margin-bottom: 22px;
+    }
+    .time-head em {
+        font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400;
+        color: var(--red); text-transform: none;
+    }
+    .time-head .hl-yel { background: var(--yellow); padding: 0 0.15em; }
+    .time-copy p { font-size: 16px; line-height: 1.55; margin-bottom: 18px; }
+    .time-stats {
+        margin-top: 28px; border: 3px solid var(--ink); background: var(--cream-light);
+    }
+    .tst {
+        display: grid; grid-template-columns: 1fr auto;
+        padding: 14px 18px;
+        border-bottom: 2px solid var(--ink);
+        align-items: center; gap: 12px;
+    }
+    .tst:last-child { border-bottom: 0; }
+    .tst-l {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500;
+    }
+    .tst-r {
+        font-family: 'Unbounded', sans-serif; font-weight: 800;
+        font-size: 18px; letter-spacing: -0.02em;
+    }
+    .tst-r.free { color: var(--red); }
+
+    /* ==================== PULL QUOTE ==================== */
+    .pull {
+        padding: 120px 32px; border-bottom: 4px solid var(--ink);
+        background: var(--cream); text-align: center;
+    }
+    .pull-text {
+        font-family: 'Unbounded', sans-serif; font-weight: 900;
+        font-size: clamp(36px, 6.5vw, 96px);
+        line-height: 0.92; letter-spacing: -0.04em;
+        text-transform: uppercase; max-width: 1200px; margin: 0 auto;
+    }
+    .pull-text em {
+        font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400;
+        color: var(--red); text-transform: none;
+    }
+    .pull-text .hl { background: var(--yellow); padding: 0 0.08em; }
+    .pull-attrib {
+        margin-top: 40px;
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
+        font-weight: 500;
+    }
+    .pull-attrib::before { content: '— '; color: var(--red); }
+
+    /* ==================== QUALITIES ==================== */
+    .qualities {
+        padding: 100px 32px;
+        background: var(--red); color: var(--cream);
+        border-bottom: 4px solid var(--ink);
+    }
+    .qualities .sec-label { background: var(--yellow); color: var(--ink); }
+    .qualities .sec-title { color: var(--cream); }
+    .qualities .sec-title em { color: var(--yellow); }
+    .qualities .sec-header { border-bottom-color: var(--cream); }
+    .q-grid {
+        display: grid; grid-template-columns: repeat(2, 1fr);
+        gap: 24px; margin-top: 40px;
+    }
+    @media (max-width: 760px) { .q-grid { grid-template-columns: 1fr; } }
+    .q-card {
+        background: var(--cream); color: var(--ink);
+        border: 3px solid var(--ink);
+        padding: 28px; position: relative;
+        box-shadow: 8px 8px 0 var(--yellow);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .q-card:hover { transform: translate(-3px, -3px); box-shadow: 12px 12px 0 var(--yellow); }
+    .q-badge {
+        position: absolute; top: -14px; right: 20px;
+        background: var(--ink); color: var(--cream);
+        padding: 6px 12px;
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 10px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+        transform: rotate(2deg);
+    }
+    .q-card:nth-child(even) .q-badge { background: var(--red); transform: rotate(-3deg); }
+    .q-title {
+        font-family: 'Unbounded', sans-serif; font-weight: 800;
+        font-size: 22px; line-height: 1.1; letter-spacing: -0.03em;
+        text-transform: uppercase; margin-top: 12px; margin-bottom: 14px;
+    }
+    .q-title em {
+        font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400;
+        color: var(--red); text-transform: none;
+    }
+    .q-body { font-size: 14px; line-height: 1.55; }
+    .q-body strong { font-weight: 700; background: var(--yellow); padding: 0 3px; }
+
+    /* ==================== HANDOFF ==================== */
+    .handoff {
+        padding: 100px 32px;
+        background: var(--cream);
+        border-bottom: 4px solid var(--ink);
+    }
+    .handoff-inner {
+        display: grid; grid-template-columns: 1fr 1.3fr;
+        gap: 60px; align-items: start; max-width: 1400px; margin: 0 auto;
+    }
+    @media (max-width: 900px) { .handoff-inner { grid-template-columns: 1fr; gap: 30px; } }
+    .handoff-left {
+        position: sticky; top: 100px;
+    }
+    .handoff-big {
+        font-family: 'Unbounded', sans-serif; font-weight: 900;
+        font-size: clamp(40px, 7vw, 96px);
+        line-height: 0.9; letter-spacing: -0.04em; text-transform: uppercase;
+    }
+    .handoff-big .out {
+        color: transparent; -webkit-text-stroke: 2px var(--ink);
+    }
+    .handoff-big em {
+        font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400;
+        color: var(--red); text-transform: none;
+    }
+    .handoff-label {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+        color: var(--red); font-weight: 700;
+        margin-bottom: 16px;
+    }
+    .handoff-body p {
+        font-size: 16px; line-height: 1.6; margin-bottom: 18px;
+    }
+    .handoff-metrics {
+        display: grid; grid-template-columns: repeat(4, 1fr);
+        gap: 0; margin: 24px 0;
+        border-top: 3px solid var(--ink); border-left: 3px solid var(--ink);
+    }
+    @media (max-width: 600px) { .handoff-metrics { grid-template-columns: repeat(2, 1fr); } }
+    .hm-cell {
+        padding: 18px;
+        border-right: 3px solid var(--ink); border-bottom: 3px solid var(--ink);
+    }
+    .hm-val {
+        font-family: 'Unbounded', sans-serif; font-weight: 900;
+        font-size: clamp(28px, 3.5vw, 44px);
+        line-height: 1; letter-spacing: -0.04em; color: var(--red);
+    }
+    .hm-lbl {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase;
+        margin-top: 10px;
+    }
+    .handoff-quote {
+        background: var(--ink); color: var(--cream);
+        padding: 24px 28px;
+        font-family: 'Instrument Serif', serif; font-style: italic;
+        font-size: 20px; line-height: 1.35;
+        border-left: 6px solid var(--yellow);
+        margin: 20px 0;
+    }
+
+    /* ==================== ENDORSEMENTS ==================== */
+    .endorse {
+        padding: 100px 32px;
+        background: var(--cream-light);
+        border-bottom: 4px solid var(--ink);
+    }
+    .e-grid {
+        display: grid; grid-template-columns: repeat(3, 1fr);
+        gap: 24px; margin-top: 40px;
+    }
+    @media (max-width: 900px) { .e-grid { grid-template-columns: 1fr; } }
+    .e-card {
+        background: var(--cream); border: 3px solid var(--ink);
+        padding: 26px; position: relative;
+        min-height: 280px; display: flex; flex-direction: column;
+        box-shadow: 5px 5px 0 var(--ink);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .e-card:nth-child(1) { transform: rotate(-1deg); }
+    .e-card:nth-child(2) { transform: rotate(0.6deg); }
+    .e-card:nth-child(3) { transform: rotate(-0.5deg); }
+    .e-card:nth-child(4) { transform: rotate(1deg); }
+    .e-card:nth-child(5) { transform: rotate(-0.8deg); }
+    .e-card:hover { transform: rotate(0) translateY(-4px); box-shadow: 10px 10px 0 var(--red); }
+    .e-stamp-v {
+        position: absolute; top: 14px; right: 14px;
+        border: 2px solid var(--red); color: var(--red);
+        padding: 4px 10px;
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 9px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+        transform: rotate(-6deg);
+    }
+    .e-mark {
+        font-family: 'Unbounded', sans-serif; font-weight: 900;
+        font-size: 72px; color: var(--red);
+        line-height: 0.5; margin-bottom: 12px;
+    }
+    .e-quote {
+        font-family: 'Instrument Serif', serif; font-style: italic;
+        font-size: 17px; line-height: 1.4; letter-spacing: -0.01em;
+        flex: 1;
+    }
+    .e-quote.placeholder { color: var(--muted); }
+    .e-sign {
+        margin-top: 20px; padding-top: 16px;
+        border-top: 2px dashed var(--ink);
+    }
+    .e-sign-name {
+        font-family: 'Caveat', cursive;
+        font-size: 24px; color: var(--red); line-height: 1; margin-bottom: 4px;
+    }
+    .e-sign-role {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500;
+    }
+
+    /* ==================== CLOSER ==================== */
+    .closer {
+        padding: 100px 32px 60px;
+        background: var(--ink); color: var(--cream);
+        text-align: center; position: relative; overflow: hidden;
+    }
+    .closer-top { display: flex; justify-content: center; gap: 16px; margin-bottom: 40px; flex-wrap: wrap; }
+    .cl-pill {
+        background: var(--red); color: var(--cream);
+        padding: 8px 16px;
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+        border-radius: 100px;
+    }
+    .cl-pill.yellow { background: var(--yellow); color: var(--ink); }
+    .closer-big {
+        font-family: 'Unbounded', sans-serif; font-weight: 900;
+        font-size: clamp(56px, 13vw, 210px);
+        line-height: 0.82; letter-spacing: -0.05em; text-transform: uppercase;
+    }
+    .closer-big .carp {
+        font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400;
+        color: var(--yellow); text-transform: none; letter-spacing: -0.02em;
+    }
+    .closer-big .out { color: transparent; -webkit-text-stroke: 2px var(--cream); }
+    .closer-sub {
+        font-family: 'Instrument Serif', serif; font-style: italic;
+        font-size: clamp(20px, 2.8vw, 28px);
+        max-width: 800px; margin: 50px auto; color: #b8ad94;
+        line-height: 1.3;
+    }
+    .closer-sign {
+        display: inline-block;
+        font-family: 'Caveat', cursive;
+        font-size: 80px; color: var(--yellow);
+        line-height: 1; transform: rotate(-3deg);
+        padding: 0 30px 8px; margin-top: 20px;
+        border-bottom: 3px solid var(--red);
+    }
+    .footer {
+        padding: 24px 32px;
+        background: var(--ink); color: #7a725f;
+        border-top: 2px solid var(--red);
+        display: flex; justify-content: space-between; align-items: center;
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+        flex-wrap: wrap; gap: 12px;
+    }
+    .footer .red { color: var(--red); }
+    .footer .yellow { color: var(--yellow); }
+
+    /* Scroll reveal */
+    .reveal {
+        opacity: 0; transform: translateY(30px);
+        transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+    <div class="topbar-brand"><span class="dot"></span> AZRA / 26 · CAMPAIGN HQ</div>
+    <div class="topbar-nav">
+        <a href="#story">STORY</a>
+        <a href="#receipts">RECEIPTS</a>
+        <a href="#venture">VENTURE LAB</a>
+        <a href="#engineering">ENGINEERING</a>
+        <a href="#platform">PLATFORM</a>
+        <a href="#time">TIME</a>
+    </div>
+    <div class="topbar-right">FOR PRESIDENT · RSVP COHORT 7 → 8</div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-inner">
+        <div class="hero-top">
+            <div class="hero-top-left">
+                <span class="hero-tag">FILE NO. 001</span>
+                <span class="hero-tag red">PRIVATE · RSVP BOARD</span>
+                <span class="hero-tag yellow">APR 24 · 2026</span>
+            </div>
+            <span class="stamp">NOT A DRAFT</span>
+        </div>
+
+        <div class="hero-title-wrap">
+            <h1 class="hero-title">
+                <span class="az">AZ</span><span class="ra">RA</span>
+                <span class="bano">BANO.</span>
+            </h1>
+            <div class="vote-sticker">
+                <div class="vote-top">VOTE</div>
+                <div class="vote-bot">ROAD TO<br>SILICON V/ALLEY</div>
+            </div>
+        </div>
+
+        <div class="hero-bottom">
+            <div class="hero-subtitle">
+                For President, Road to Silicon <span class="slash-v">V/Alley</span>.<br>
+                Because this club gave me <em>my founding team</em> — and it's my turn to give back.
+            </div>
+            <div class="hero-creds">
+                <span class="red">→</span> COHORT 6 FELLOW<br>
+                <span class="red">→</span> COHORT 7 RECRUITMENT COORD.<br>
+                <span class="red">→</span> VENTURE LAB OPERATOR<br>
+                <span class="red">→</span> LINKEDIN WORKSHOP HOST<br>
+                <span class="red">→</span> <em style="font-style:italic;">story starts below</em>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+    <div class="ticker-track">
+        <span>
+            <span class="ticker-item">GOOGLE HQ · MTN VIEW <span class="sep"></span></span>
+            <span class="ticker-item">GOLDMAN SACHS <span class="sep"></span></span>
+            <span class="ticker-item">NASA SPACETECH · 1ST NATIONALLY <span class="sep"></span></span>
+            <span class="ticker-item">VERIZON SMART CAMPUS · NATIONAL WINNER <span class="sep"></span></span>
+            <span class="ticker-item">RUTGERS SHARK TANK · 2× PLACED <span class="sep"></span></span>
+            <span class="ticker-item">HULT PRIZE · TOP 8 <span class="sep"></span></span>
+            <span class="ticker-item">COLUMBIA QUANTUM ML <span class="sep"></span></span>
+            <span class="ticker-item">HACKPRINCETON REGENERON <span class="sep"></span></span>
+            <span class="ticker-item">OUTSTANDING STUDENT LEADER <span class="sep"></span></span>
+        </span>
+        <span>
+            <span class="ticker-item">GOOGLE HQ · MTN VIEW <span class="sep"></span></span>
+            <span class="ticker-item">GOLDMAN SACHS <span class="sep"></span></span>
+            <span class="ticker-item">NASA SPACETECH · 1ST NATIONALLY <span class="sep"></span></span>
+            <span class="ticker-item">VERIZON SMART CAMPUS · NATIONAL WINNER <span class="sep"></span></span>
+            <span class="ticker-item">RUTGERS SHARK TANK · 2× PLACED <span class="sep"></span></span>
+            <span class="ticker-item">HULT PRIZE · TOP 8 <span class="sep"></span></span>
+            <span class="ticker-item">COLUMBIA QUANTUM ML <span class="sep"></span></span>
+            <span class="ticker-item">HACKPRINCETON REGENERON <span class="sep"></span></span>
+            <span class="ticker-item">OUTSTANDING STUDENT LEADER <span class="sep"></span></span>
+        </span>
+    </div>
+</div>
+
+<!-- MANIFESTO / PROLOGUE -->
+<section class="manifesto">
+    <div class="manifesto-inner">
+        <div class="mf-line-1 reveal">Most candidates<br>tell you what<br>they <span class="strike">WOULD</span> do.</div>
+        <div class="mf-line-2 reveal">I'll show you<br>what I've <span class="dblock">ALREADY</span> done.</div>
+        <div class="mf-line-3 reveal">But first, <span class="red">let me tell you why I care.</span></div>
+
+        <div class="mf-bridge">
+            <div class="mf-bridge-left">
+                <span class="arrow">→</span> This pitch isn't a résumé. It's a story. Three acts. One room where it all started. Keep scrolling.
+            </div>
+            <div class="signed-hand">— Azra</div>
+        </div>
+    </div>
+</section>
+
+<!-- =========================================== -->
+<!-- ACT I DIVIDER -->
+<!-- =========================================== -->
+<section class="act-divider">
+    <div class="act-divider-inner">
+        <div class="act-kicker">ACT · ONE</div>
+        <h2 class="act-big">
+            <span class="filled">WHY</span><br>
+            <em>RSVP</em>
+        </h2>
+        <p class="act-sub">
+            Before you hear the plan, hear the origin. One room. Two friendships. A company. A passion. <span class="hl">A family.</span>
+        </p>
+    </div>
+</section>
+
+<!-- STORY -->
+<section class="story" id="story">
+    <div class="story-inner">
+
+        <!-- OPENING -->
+        <div class="story-opening reveal">
+            <div class="story-opening-lead">Setting the scene ↓</div>
+            <h2>I walked into TechStart with <em>no idea</em> what I was doing.</h2>
+            <p style="font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(20px,2.6vw,28px);line-height:1.3;max-width:800px;margin-top:28px;color:var(--ink-soft);">
+                Freshman year. First week. I didn't know anyone. I didn't know what an accelerator was. I wasn't sure I belonged. RSVP had opened a door, so I walked through it.
+            </p>
+            <p style="font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(20px,2.6vw,28px);line-height:1.3;max-width:800px;margin-top:16px;color:var(--ink-soft);">
+                What happened in that room changed everything.
+            </p>
+        </div>
+
+        <!-- CHAPTER 01 -->
+        <article class="chapter reveal">
+            <div class="chapter-rail">
+                <div class="chapter-rail-sticky">
+                    <div class="ch-num">01</div>
+                    <div class="ch-label">THE ROOM</div>
+                </div>
+            </div>
+            <div class="chapter-body">
+                <h3>I went looking for friends. <em>I left with a founding team.</em></h3>
+                <p>That's the part of the RSVP story most people miss. It isn't a fellowship that hands you a curriculum and sends you home. <strong>It's a room.</strong> And the people in that room go on to build everything together.</p>
+                <p>I walked into TechStart looking to make a few friends. What I got instead was every collaborator I've worked with since. Same room. Same year. Same fellowship. <strong>Different companies.</strong></p>
+
+                <div class="polaroid-cluster">
+                    <div class="polaroid tilt-l">
+                        <div class="polaroid-tape"></div>
+                        <div class="polaroid-img">TECHSTART<br>NIGHT ONE</div>
+                        <div class="polaroid-caption">where it started ✦</div>
+                    </div>
+                    <div class="polaroid tilt-r">
+                        <div class="polaroid-tape" style="background:rgba(230,50,35,0.3);"></div>
+                        <div class="polaroid-img" style="background:linear-gradient(135deg,#2d3d5c 0%,#4a5a7a 50%,#2d3d5c 100%);">RSVP<br>COHORT 6</div>
+                        <div class="polaroid-caption">the room ✦</div>
+                    </div>
+                </div>
+
+                <div class="story-quote">RSVP isn't a class. <strong style="color:var(--red);font-style:normal;font-weight:700">It's a room.</strong> And every founder I now build with — I met inside it.</div>
+            </div>
+        </article>
+
+        <!-- CHAPTER 02 — AEROBIN -->
+        <article class="chapter reveal">
+            <div class="chapter-rail">
+                <div class="chapter-rail-sticky">
+                    <div class="ch-num">02</div>
+                    <div class="ch-label">THE FIRST CO-FOUNDER</div>
+                </div>
+            </div>
+            <div class="chapter-body">
+                <h3>Yusuf + me → <em>AeroBin.</em></h3>
+                <p>One of the people in that room was Yusuf Lee. A year later we co-founded <span class="name-red">AeroBin</span> — a 5G-native smart waste infrastructure system. We pitched it everywhere RSVP put a stage in front of us. The wins came in a string:</p>
+
+                <div class="wins">
+                    <div class="win-row">
+                        <div class="win-name"><em>AeroBin</em> — Rutgers Shark Tank</div>
+                        <div class="win-result red">2ND · 65+ TEAMS</div>
+                    </div>
+                    <div class="win-row">
+                        <div class="win-name"><em>AeroBin</em> — Verizon Smart Campus (Nat'l)</div>
+                        <div class="win-result">WINNER</div>
+                    </div>
+                    <div class="win-row">
+                        <div class="win-name"><em>InnerSolace</em> — Rutgers Shark Tank</div>
+                        <div class="win-result red">PLACED</div>
+                    </div>
+                    <div class="win-row">
+                        <div class="win-name"><em>InnerSolace</em> — NASA SpaceTech</div>
+                        <div class="win-result">1ST · 290+ TEAMS</div>
+                    </div>
+                    <div class="win-row">
+                        <div class="win-name">AeroBin pilot deployment</div>
+                        <div class="win-result yellow">CAMPUS · AIRPORTS · STADIUMS</div>
+                    </div>
+                </div>
+
+                <p style="margin-top:20px;">Two startups. Multiple national wins. A live pilot now rolling out across <strong>campus, airports, and stadiums.</strong> None of it happens if Yusuf and I don't end up at the same RSVP table.</p>
+            </div>
+        </article>
+
+        <!-- CHAPTER 03 — KAVISH -->
+        <article class="chapter reveal">
+            <div class="chapter-rail">
+                <div class="chapter-rail-sticky">
+                    <div class="ch-num">03</div>
+                    <div class="ch-label">THE SECOND CO-FOUNDER</div>
+                </div>
+            </div>
+            <div class="chapter-body">
+                <h3>Kavish + me → a <em>healthcare accelerator.</em></h3>
+                <p>Also in that room: Kavish. Different problem space, different startup, same fellowship. Kavish and I went on to <strong>co-found a healthcare-specific startup accelerator</strong> together — recruiting founder teams, running programming, building the curriculum, and getting first cohorts to ship.</p>
+                <p>Same playbook I'm now running for the Venture Lab. Same playbook I'd run for RSVP at the next level up.</p>
+
+                <div class="story-quote">Two people from the same RSVP room. <strong style="color:var(--red);font-style:normal;font-weight:700">Two different startups.</strong> One accelerator we built side-by-side.</div>
+            </div>
+        </article>
+
+        <!-- CHAPTER 04 — LAUNCH CIRCUIT -->
+        <article class="chapter reveal">
+            <div class="chapter-rail">
+                <div class="chapter-rail-sticky">
+                    <div class="ch-num">04</div>
+                    <div class="ch-label">THE WHOLE TEAM</div>
+                </div>
+            </div>
+            <div class="chapter-body">
+                <h3>All of us → <em>Launch Circuit.</em></h3>
+                <p>Then we did the thing that still feels surreal. The same group of friends from that RSVP room <strong>co-founded Launch Circuit</strong> — Rutgers' first semester-long, engineer-native accelerator. Curriculum. Workshops. Mentors. Sponsors. A pipeline from idea → MVP → launch.</p>
+                <p>I was elected <strong>President.</strong> Partnerships with Columbia, the National Science Foundation, and Rutgers School of Engineering followed.</p>
+
+                <div class="polaroid tilt-l">
+                    <div class="polaroid-tape" style="background:rgba(31,79,221,0.25);"></div>
+                    <div class="polaroid-img" style="background:linear-gradient(135deg,#4a3a2a 0%,#6c5a3f 50%,#4a3a2a 100%);">LAUNCH CIRCUIT<br>FOUNDING TEAM</div>
+                    <div class="polaroid-caption">all of us — same RSVP room ✦</div>
+                </div>
+
+                <p style="margin-top:20px;">That's the pattern. RSVP put a group of strangers in a room. We left as friends, then co-founders, then a founding team. Three companies between us. One accelerator. <strong>And we're not done.</strong></p>
+            </div>
+        </article>
+
+        <!-- CHAPTER 05 — CAREER -->
+        <article class="chapter reveal">
+            <div class="chapter-rail">
+                <div class="chapter-rail-sticky">
+                    <div class="ch-num">05</div>
+                    <div class="ch-label">THE CAREER</div>
+                </div>
+            </div>
+            <div class="chapter-body">
+                <h3>And the jobs came from <em>the same network</em>.</h3>
+                <p>Google. Goldman Sachs. Two of the most competitive internships in the country. Both came through doors that RSVP either opened directly or made me good enough to walk through.</p>
+                <p>At Google HQ, I'm on the <strong>Ads team</strong> — the org generating ~80% of Alphabet's revenue. SWE, Mountain View. Building simulation-based forecasting across 20K+ entities, with a roadmap to 50M+.</p>
+                <p>I didn't just go to Silicon Valley. I worked inside the engine room of one of its biggest companies. And I want to come home and build the pipeline that sent me there — for the next cohort, and the cohort after that.</p>
+            </div>
+        </article>
+
+        <!-- STORY CLOSER -->
+        <div class="story-closer reveal">
+            <div class="story-closer-lead">CHAPTER 06 · WHY I CARE ↓</div>
+            <h3>RSVP didn't give me a line on my <em>résumé</em>.</h3>
+            <p>
+                It gave me <strong style="color:var(--yellow);font-style:normal;font-weight:700">my founding team.</strong><br><br>
+                Two startups. One accelerator. A career at Google HQ. A passion for entrepreneurship I didn't know I had. The network that turned all of it into something real.<br><br>
+                Now I'm asking for the title — so the next cohort gets to walk into the same room and walk out with the same thing I did.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<!-- =========================================== -->
+<!-- ACT II DIVIDER -->
+<!-- =========================================== -->
+<section class="act-divider">
+    <div class="act-divider-inner">
+        <div class="act-kicker">ACT · TWO</div>
+        <h2 class="act-big">
+            THE<br>
+            <em>return</em>
+        </h2>
+        <p class="act-sub">
+            This is the part where I show you I've already been doing the job. <span class="hl">Without the title.</span> This whole year.
+        </p>
+    </div>
+</section>
+
+<!-- RECEIPTS -->
+<section class="receipts" id="receipts">
+    <div class="sec-header">
+        <div class="sec-label red">§ A · THE RECEIPTS</div>
+        <h2 class="sec-title">What I did for RSVP <em>before I asked for the job</em>.</h2>
+    </div>
+
+    <div class="receipts-intro">
+        Five exhibits. Each one real, dated, verifiable. <span class="hl-y">None of them were required.</span> I did them because the club gave me everything, and I don't believe in leaving a debt unpaid.
+    </div>
+
+    <div class="receipts-grid">
+
+        <div class="receipt reveal">
+            <div class="receipt-head">
+                <span class="receipt-exh">EXHIBIT A</span>
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:0.12em;">RECRUITMENT</span>
+            </div>
+            <div class="receipt-num">60<span class="unit">+ scored</span></div>
+            <div class="receipt-title">Ran Cohort 7 recruitment — <em>as a volunteer.</em></div>
+            <div class="receipt-body">Conducted and scored 60+ candidate interviews on structured rubrics. Led group interviews for collaboration and founder-potential signals. Synthesized quantitative and qualitative data into cohort selections. I know this incoming cohort by name already.</div>
+        </div>
+
+        <div class="receipt reveal">
+            <div class="receipt-head">
+                <span class="receipt-exh">EXHIBIT B</span>
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:0.12em;">ACCELERATOR</span>
+            </div>
+            <div class="receipt-num">10<span class="unit"> teams</span></div>
+            <div class="receipt-title">Ran a <em>full-semester accelerator</em> — the Venture Lab.</div>
+            <div class="receipt-body">Ten HealthTech teams, weekly reviews, founder check-ins, submissions tracked. SafetySteps, bloodBridge, Medi-Scan, BillFight — I know each project and where each team got stuck. Full roster in the next section ↓</div>
+        </div>
+
+        <div class="receipt reveal">
+            <div class="receipt-head">
+                <span class="receipt-exh">EXHIBIT C</span>
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:0.12em;">WORKSHOP</span>
+            </div>
+            <div class="receipt-num">1<span class="unit"> talk, full follow-up</span></div>
+            <div class="receipt-title">I volunteered to host the <em>LinkedIn workshop</em>.</div>
+            <div class="receipt-body">"LinkedIn & Your Personal Brand" — April 15, 7:30 PM, RBS 4071. I volunteered to teach it, ran it end-to-end, and followed up with every single attendee afterward. Smaller crowd than I hoped — same energy, same follow-through. That's the standard.</div>
+        </div>
+
+        <div class="receipt reveal">
+            <div class="receipt-head">
+                <span class="receipt-exh">EXHIBIT D</span>
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:0.12em;">SHOWING UP</span>
+            </div>
+            <div class="receipt-num">∞<span class="unit"> showing up</span></div>
+            <div class="receipt-title">I <em>stay involved</em> — even when no one's keeping score.</div>
+            <div class="receipt-body">I helped on TechStart night one — setting up teams, talking to founders. I came back to <strong>compete in RSVP's pitch competitions</strong> and won where it counted: <strong>2nd at Rutgers Shark Tank</strong> (AeroBin) and <strong>winner of the Engineering Innovation Relay</strong> with the Industrial Engineering Club (TAKT, AI voice-agent for healthcare scheduling). I show up to nearly every workshop, panel, and speaker event RSVP runs. Not because I was asked. Because the people inside the room are why I'm still here.</div>
+        </div>
+
+        <div class="receipt reveal">
+            <div class="receipt-head">
+                <span class="receipt-exh">EXHIBIT E</span>
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:0.12em;">OUTREACH · OUTCOME</span>
+            </div>
+            <div class="receipt-num">2<span class="unit"> internships · from RSVP to HQ</span></div>
+            <div class="receipt-title">What I learned at RSVP I turned into <em>a playbook</em>.</div>
+            <div class="receipt-body">Every founder's lecture, every mentor intro, every alumni connection — I worked them. The result: warm paths into Google (SWE, Mountain View) and Goldman Sachs. That playbook shouldn't live only in my head. As president, I'd turn it into curriculum the whole cohort can use — the exact pipeline that moved me from TechStart to Mountain View.</div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ROSTER -->
+<section class="roster" id="venture">
+    <div class="sec-header">
+        <div class="sec-label">§ B · THE ROSTER</div>
+        <h2 class="sec-title">My Venture Lab, <em>this semester</em>.</h2>
+    </div>
+
+    <div class="roster-intro">
+        If you're wondering whether I can run an accelerator for RSVP — <span class="yellow-hl">I already built one.</span> Ten founder teams. One semester. Full operator role. Here's what they shipped:
+    </div>
+
+    <div class="team-stack">
+        <div class="team reveal">
+            <div class="team-id">03</div>
+            <div>
+                <div class="team-name"><em>SafetySteps</em></div>
+                <div class="team-founders">DUBEY · SINHA</div>
+            </div>
+            <div class="team-desc">Smartwatch-native care software for Alzheimer's caregivers. Location, vitals, pain-signal detection via fight-or-flight telemetry. Affordable by design — runs on hardware families already own.</div>
+            <div class="team-pill">ELDER CARE · IoT</div>
+        </div>
+
+        <div class="team reveal">
+            <div class="team-id">04</div>
+            <div>
+                <div class="team-name"><em>bloodBridge</em></div>
+                <div class="team-founders">SHERALI · GUPTA · ARORA · KANNAN</div>
+            </div>
+            <div class="team-desc">Full-stack ML platform predicting hospital blood shortages 7 days out and coordinating Northeast-regional redistribution. Random Forest on blood-type, expiration, and usage. Flask · JS · Python.</div>
+            <div class="team-pill">SUPPLY · ML</div>
+        </div>
+
+        <div class="team reveal">
+            <div class="team-id">06</div>
+            <div>
+                <div class="team-name"><em>Medi-Scan</em></div>
+                <div class="team-founders">GORANTALA · TALLURI · BOBBALA · BOJEDLA</div>
+            </div>
+            <div class="team-desc">Touchless medical imaging for the operating room. Gesture-based CT/MRI control, PACS integration, sterile workflow. Hardware licensing + SaaS + training revenue, validated via surgeon interviews.</div>
+            <div class="team-pill">SURGICAL · CV</div>
+        </div>
+
+        <div class="team reveal">
+            <div class="team-id">09</div>
+            <div>
+                <div class="team-name"><em>BillFight</em></div>
+                <div class="team-founders">SAI</div>
+            </div>
+            <div class="team-desc">AI-powered patient advocacy for disputing medical bills. Automated dispute-letter generation, patient-acquisition channels optimized for the people who can least afford to lose.</div>
+            <div class="team-pill">PATIENT · AI</div>
+        </div>
+    </div>
+</section>
+
+<!-- ENGINEERING BRIDGE -->
+<section class="engineering" id="engineering">
+    <div class="sec-header">
+        <div class="sec-label">§ C · THE BRIDGE</div>
+        <h2 class="sec-title">The engineering pipeline <em>no one else is building</em>.</h2>
+    </div>
+
+    <div class="eng-grid">
+        <div>
+            <div class="eng-lead">RSVP doesn't just need more fellows.<br>It needs more <em>builders</em>. And most candidates won't bring them in.</div>
+
+            <div class="eng-body">
+                <p>Launch Circuit (Chapter 04) is one piece of this. The rest is the year of work nobody saw — pulling engineers, ECE, CS, and biomedical students into the RSVP ecosystem one conversation at a time. A side of campus most candidates don't touch and don't have trust on.</p>
+                <p>I was <strong>elected</strong> to represent the School of Engineering to the Rutgers University Student Assembly (40K+ students). I sit on the boards of <strong>Muslim Tech Collab</strong> and <strong>RES</strong>, where the technical-org builders actually live. I've pulled engineers into pitch competitions, hackathons, and fellowship applications they'd never have applied to otherwise.</p>
+                <p>Engineers make the best founders because they ship. But they also don't apply to things like RSVP unless a peer tells them to. <strong>I'm that peer.</strong></p>
+                <p>Give me the presidency and RSVP stops being a business-school-coded fellowship. It becomes <strong>campus-wide</strong>.</p>
+            </div>
+        </div>
+
+        <div class="eng-list">
+            <div class="eng-list-title">SOE FOOTPRINT · RECEIPTS</div>
+            <div class="eng-item">
+                <div class="eng-item-num">01</div>
+                <div class="eng-item-text"><strong>Elected</strong> Rutgers School of Engineering Rep to RUSA — 40K+ students represented.</div>
+            </div>
+            <div class="eng-item">
+                <div class="eng-item-num">02</div>
+                <div class="eng-item-text"><strong>President, Launch Circuit</strong> — Rutgers' first engineering-native accelerator. Co-founded with the RSVP room. Partnered with Columbia, NSF.</div>
+            </div>
+            <div class="eng-item">
+                <div class="eng-item-num">03</div>
+                <div class="eng-item-text"><strong>Outstanding Student Leader</strong> award — 1 of 14K+ first-years university-wide.</div>
+            </div>
+            <div class="eng-item">
+                <div class="eng-item-num">04</div>
+                <div class="eng-item-text"><strong>University-Wide Spirit of Innovation Award</strong> — recognized across 60K+ students.</div>
+            </div>
+            <div class="eng-item">
+                <div class="eng-item-num">05</div>
+                <div class="eng-item-text"><strong>Muslim Tech Collab + RES board</strong> — active inside the technical orgs that produce the builders RSVP wants to recruit.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =========================================== -->
+<!-- ACT III DIVIDER -->
+<!-- =========================================== -->
+<section class="act-divider">
+    <div class="act-divider-inner">
+        <div class="act-kicker">ACT · THREE</div>
+        <h2 class="act-big">
+            THE<br>
+            <em>mandate</em>
+        </h2>
+        <p class="act-sub">
+            What I'll build. <span class="hl">And the time, temperament, and hand-off proof to back it.</span>
+        </p>
+    </div>
+</section>
+
+<!-- PLATFORM / AGENDA -->
+<section class="platform" id="platform">
+    <div class="sec-header">
+        <div class="sec-label red">§ D · THE PLATFORM</div>
+        <h2 class="sec-title">What I'll <em>actually do</em> as President.</h2>
+    </div>
+
+    <div class="platform-intro">
+        Six things I'd ship in <span class="hl-y">my first year</span>. Each one solves a real gap in the current program. Each one I can execute on with the network, time, and operator-experience I'm already bringing.
+    </div>
+
+    <div class="plank-grid">
+
+        <!-- PLANK 01 — SILICON VALLEY TRIP -->
+        <article class="plank reveal">
+            <div class="plank-rail">
+                <div class="plank-num">01</div>
+                <div class="plank-tag">FLAGSHIP TRIP</div>
+            </div>
+            <div class="plank-body">
+                <h3>A Silicon Valley trip with <em>actual rooms</em>, not lobbies.</h3>
+                <p class="plank-lead">The current trip is good. I want to make it the most enviable college fellowship trip in the Northeast.</p>
+                <p>I'm tapping the network I built at Google HQ + my fellowship circles to pull <strong>real on-site visits</strong>: Browserbase, Y Combinator, a16z, Sequoia, Anthropic offices, and operator-led founder dinners. Not just a tour past the building — meetings inside it.</p>
+                <div class="plank-tactics">
+                    <div class="tactic"><span class="tactic-dot"></span> <strong>YC office hours</strong> via my Cohort 7+8 alumni network</div>
+                    <div class="tactic"><span class="tactic-dot"></span> <strong>a16z + Sequoia partner intros</strong> through RSVP alumni at funds</div>
+                    <div class="tactic"><span class="tactic-dot"></span> <strong>Browserbase HQ visit</strong> + technical demo for the engineers in cohort</div>
+                    <div class="tactic"><span class="tactic-dot"></span> <strong>Curated founder dinners</strong> — not just "founders," operators at the stage we're trying to reach</div>
+                    <div class="tactic"><span class="tactic-dot"></span> <strong>Anthropic / OpenAI / frontier-AI lab tours</strong> for the AI-leaning fellows</div>
+                </div>
+            </div>
+        </article>
+
+        <!-- PLANK 02 — JUDGING -->
+        <article class="plank reveal">
+            <div class="plank-rail">
+                <div class="plank-num">02</div>
+                <div class="plank-tag">CREDIBILITY</div>
+            </div>
+            <div class="plank-body">
+                <h3>Pro judges for Shark Tank + TechStart. <em>No more student panels.</em></h3>
+                <p class="plank-lead">Right now, fellows pitch to other fellows. The feedback is friendly. The signal is weak.</p>
+                <p>I'd swap student judges for working <strong>VCs, operators, and founders</strong> — people whose feedback actually counts, and whose follow-ups can turn into checks. Pitching to a real partner once is worth more than ten student rounds.</p>
+                <div class="plank-tactics">
+                    <div class="tactic"><span class="tactic-dot"></span> <strong>2–3 working VCs</strong> per major pitch event (NYC + remote)</div>
+                    <div class="tactic"><span class="tactic-dot"></span> <strong>1 active founder</strong> at every panel for product feedback</div>
+                    <div class="tactic"><span class="tactic-dot"></span> <strong>Office-hours follow-ups</strong> for top teams — judges become mentors</div>
+                    <div class="tactic"><span class="tactic-dot"></span> <strong>Recorded feedback</strong> shared with all fellows, not just the finalists</div>
+                </div>
+            </div>
+        </article>
+
+        <!-- PLANK 03 — NYC -->
+        <article class="plank reveal">
+            <div class="plank-rail">
+                <div class="plank-num">03</div>
+                <div class="plank-tag">ECOSYSTEM</div>
+            </div>
+            <div class="plank-body">
+                <h3>Tap NYC. <em>It's 40 minutes away.</em></h3>
+                <p class="plank-lead">RSVP is "Road to Silicon V/Alley." We're already <em>on the V/Alley side</em> of the slash. Let's act like it.</p>
+                <p>NYC has the second-densest concentration of seed-stage VCs and tech operators in the country. We don't use it. I'd run <strong>monthly NYC days</strong> — coffee chats, founder office hours, fund visits, and informal demo nights — so fellows are pitching in a real ecosystem before they even graduate.</p>
+                <div class="plank-tactics">
+                    <div class="tactic"><span class="tactic-dot"></span> <strong>Monthly NYC trip</strong> — train down, 3–4 stops, back by dinner</div>
+                    <div class="tactic"><span class="tactic-dot"></span> <strong>Demo nights</strong> hosted at NYC accelerator + VC offices</div>
+                    <div class="tactic"><span class="tactic-dot"></span> <strong>RSVP × NYC operator meetups</strong> — open invite to alumni who work in the city</div>
+                </div>
+            </div>
+        </article>
+
+        <!-- PLANK 04 — MENTORSHIP -->
+        <article class="plank reveal">
+            <div class="plank-rail">
+                <div class="plank-num">04</div>
+                <div class="plank-tag">DEPTH</div>
+            </div>
+            <div class="plank-body">
+                <h3>Long-term mentorship for <em>actual founders</em>.</h3>
+                <p class="plank-lead">One-off speaker events disappear from your brain in a week. Year-long mentor relationships change your trajectory.</p>
+                <p>I'd launch a <strong>structured mentorship program</strong> matching fellows running real startups with operators, founders, and VCs for the full academic year. Monthly check-ins. Goal-tracking. Real accountability. The mentors I've already met through Google, NASA, and Columbia are willing — they just need someone to set up the program.</p>
+                <div class="plank-tactics">
+                    <div class="tactic"><span class="tactic-dot"></span> <strong>1:1 matching</strong> for serious founders — application-based</div>
+                    <div class="tactic"><span class="tactic-dot"></span> <strong>Monthly cadence</strong> — 30 min calls, structured check-in template</div>
+                    <div class="tactic"><span class="tactic-dot"></span> <strong>Mentor pool</strong> drawn from Google / Goldman / NASA / Columbia / a16z / YC alums</div>
+                    <div class="tactic"><span class="tactic-dot"></span> <strong>Year-end demo</strong> — mentors come to see what their founders shipped</div>
+                </div>
+            </div>
+        </article>
+
+        <!-- PLANK 05 — PANELS -->
+        <article class="plank reveal">
+            <div class="plank-rail">
+                <div class="plank-num">05</div>
+                <div class="plank-tag">PROGRAMMING</div>
+            </div>
+            <div class="plank-body">
+                <h3>Panels &gt; one-off speakers.</h3>
+                <p class="plank-lead">A single speaker event = one perspective. A panel = three operators disagreeing, which is how you actually learn.</p>
+                <p>I'd shift the speaker format toward <strong>3-person panels with a real moderator</strong>, organized by theme: AI infra, healthtech, fintech, consumer, climate, frontier robotics. Each panel becomes a recruiting event — alums and partners want to be in the room when the conversation is good.</p>
+                <div class="plank-tactics">
+                    <div class="tactic"><span class="tactic-dot"></span> <strong>1 themed panel/month</strong> — operator + investor + technical-founder</div>
+                    <div class="tactic"><span class="tactic-dot"></span> <strong>Pre-read sent to fellows</strong> — show up sharp, not blank</div>
+                    <div class="tactic"><span class="tactic-dot"></span> <strong>Recorded + clipped</strong> — content that recruits next year's cohort</div>
+                </div>
+            </div>
+        </article>
+
+        <!-- PLANK 06 — CULTURE -->
+        <article class="plank reveal">
+            <div class="plank-rail">
+                <div class="plank-num">06</div>
+                <div class="plank-tag">CULTURE</div>
+            </div>
+            <div class="plank-body">
+                <h3>Social events. <em>Board bonding.</em> Make the family real.</h3>
+                <p class="plank-lead">The thing I keep coming back to in my own RSVP story: I didn't stay because of the curriculum. I stayed because of the people.</p>
+                <p>Programming alone doesn't build a cohort that goes on to co-found companies together. <strong>Time outside the curriculum</strong> does. I'd run regular cohort socials, board retreats, and informal off-campus dinners — the kind of thing that turns a fellowship into a network you'll have for ten years.</p>
+                <div class="plank-tactics">
+                    <div class="tactic"><span class="tactic-dot"></span> <strong>Monthly cohort socials</strong> — low-lift, low-cost, high-frequency</div>
+                    <div class="tactic"><span class="tactic-dot"></span> <strong>Board retreat</strong> at the start of each semester — alignment + bonding</div>
+                    <div class="tactic"><span class="tactic-dot"></span> <strong>Fellowship dinners</strong> — small groups, off-campus, real conversation</div>
+                    <div class="tactic"><span class="tactic-dot"></span> <strong>Alumni weekend</strong> once a year — bring back Cohorts 1–6 to mentor 7+8</div>
+                </div>
+            </div>
+        </article>
+
+    </div>
+
+    <!-- WHY ME synthesis -->
+    <div class="why-me reveal">
+        <div class="why-me-label">SO — WHY ME?</div>
+        <h3 class="why-me-title">Every plank above is something I can <em>actually deliver</em>.</h3>
+        <div class="why-me-grid">
+            <div class="why-row">
+                <div class="why-claim">Pull YC, a16z, Sequoia, Browserbase for a real SF trip.</div>
+                <div class="why-proof">I work at Google HQ. The network exists. I just need the title to formalize it.</div>
+            </div>
+            <div class="why-row">
+                <div class="why-claim">Get pro judges for Shark Tank + TechStart.</div>
+                <div class="why-proof">I've placed in Shark Tank, Hult, NASA SpaceTech, Verizon — I know who the real judges are because I've pitched to them.</div>
+            </div>
+            <div class="why-row">
+                <div class="why-claim">Run a long-term founder mentorship program.</div>
+                <div class="why-proof">I built one inside Grey Matter. I'm running one now in the Venture Lab. Third time isn't a stretch.</div>
+            </div>
+            <div class="why-row">
+                <div class="why-claim">Make the social culture stick.</div>
+                <div class="why-proof">I hosted sold-out 200-person galas + hackathons + conferences at Grey Matter. Cohort socials are the easy part.</div>
+            </div>
+            <div class="why-row">
+                <div class="why-claim">Pull NYC into the program every month.</div>
+                <div class="why-proof">I'm already pitching, hacking, and recruiting in NYC monthly. RSVP just needs to come with me.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TIME -->
+<section class="time-sec" id="time">
+    <div class="sec-header">
+        <div class="sec-label red">§ E · THE CALENDAR</div>
+        <h2 class="sec-title">I have <em>the time</em>. Here's the math.</h2>
+    </div>
+
+    <div class="time-grid">
+
+        <div class="chalkboard reveal">
+            <div class="cb-title">
+                <div class="left">FALL '26 · MY WEEK</div>
+                <div class="right">14–16 CR</div>
+            </div>
+            <div class="cal-header">
+                <div></div><div>MON</div><div>TUE</div><div>WED</div><div>THU</div><div>FRI</div>
+            </div>
+            <div class="cal-body">
+                <div class="cal-row">
+                    <div class="cal-time">8:30</div>
+                    <div class="cal-cls">ECE II</div><div class="cal-cls">SOFT ENG</div><div class="cal-cell"></div><div class="cal-cls">ECE II</div><div class="cal-cls">SOFT ENG</div>
+                </div>
+                <div class="cal-row">
+                    <div class="cal-time">10:20</div>
+                    <div class="cal-cell"></div><div class="cal-cls">COMP ARCH</div><div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cls">COMP ARCH</div>
+                </div>
+                <div class="cal-row">
+                    <div class="cal-time">12:00</div>
+                    <div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cell"></div>
+                </div>
+                <div class="cal-row">
+                    <div class="cal-time">2:00</div>
+                    <div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cls">ARCH LAB</div><div class="cal-cell"></div>
+                </div>
+                <div class="cal-row">
+                    <div class="cal-time">3:50</div>
+                    <div class="cal-cls">DISCRETE</div><div class="cal-cell"></div><div class="cal-cls">DISCRETE</div><div class="cal-cell"></div><div class="cal-cell"></div>
+                </div>
+                <div class="cal-row">
+                    <div class="cal-time">5:00</div>
+                    <div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cell"></div>
+                </div>
+                <div class="cal-row">
+                    <div class="cal-time">6:00</div>
+                    <div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cell"></div>
+                </div>
+                <div class="cal-row">
+                    <div class="cal-time">7:00</div>
+                    <div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cell"></div>
+                </div>
+                <div class="cal-row">
+                    <div class="cal-time">8:00</div>
+                    <div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cell"></div>
+                </div>
+                <div class="cal-free-stamp">5PM<br>→ YOURS</div>
+            </div>
+            <div class="cb-note">done by 5 · fridays + weekends, 100% free</div>
+        </div>
+
+        <div class="time-copy">
+            <h3 class="time-head">Classes end at <span class="hl-yel">5 PM</span>. RSVP runs at night. <em>The math works.</em></h3>
+            <p>Most RSVP events happen in the evenings. My schedule clears by 5 PM four days a week. Friday afternoons, Friday nights, and entire weekends — <strong>free.</strong></p>
+            <p>I don't hold a part-time job. I don't split evenings. This isn't a stretch to fit RSVP in — RSVP fits <em style="font-style:italic;background:var(--yellow);padding:0 4px;">into the time I already have</em>.</p>
+
+            <div class="time-stats">
+                <div class="tst"><div class="tst-l">Fall '26 credit load</div><div class="tst-r">14–16</div></div>
+                <div class="tst"><div class="tst-l">Weekday evenings open</div><div class="tst-r free">5 / 5</div></div>
+                <div class="tst"><div class="tst-l">Weekends</div><div class="tst-r free">FULLY OPEN</div></div>
+                <div class="tst"><div class="tst-l">Other student orgs</div><div class="tst-r">2 · MTC, RES</div></div>
+                <div class="tst"><div class="tst-l">Outside work</div><div class="tst-r">1 · stealth</div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PULL QUOTE -->
+<section class="pull">
+    <div class="pull-text">
+        I didn't just go to <em>Silicon Valley</em>.<br>
+        I worked on the <span class="hl">80%-of-revenue</span> team at Google HQ.<br>
+        Now I'm coming home to <em>build the pipeline</em> that got me there.
+    </div>
+    <div class="pull-attrib">GOOGLE · ADS · MOUNTAIN VIEW · NOV 2025 → PRESENT</div>
+</section>
+
+<!-- QUALITIES -->
+<section class="qualities">
+    <div class="sec-header">
+        <div class="sec-label">§ F · TEMPERAMENT</div>
+        <h2 class="sec-title">Four <em>non-negotiables</em>.</h2>
+    </div>
+
+    <div class="q-grid">
+        <div class="q-card reveal">
+            <span class="q-badge">01 · OPERATOR</span>
+            <div class="q-title">I've <em>actually worked</em> in Silicon Valley.</div>
+            <div class="q-body">SWE at Google HQ on the Ads team — <strong>~80% of Alphabet's revenue</strong>. Simulation-based forecasting across 20K+ entities, roadmap to 50M+. RSVP's whole premise is the road there. I just drove it.</div>
+        </div>
+
+        <div class="q-card reveal">
+            <span class="q-badge">02 · EMPATHY</span>
+            <div class="q-title">High-EQ leadership, <em>not performance</em>.</div>
+            <div class="q-body">Extroverted and compassionate by default. I notice the quiet founder in the room. Fellows don't stay for points and panels — they stay because someone made them feel <strong>seen</strong>. That's the whole job.</div>
+        </div>
+
+        <div class="q-card reveal">
+            <span class="q-badge">03 · REPRESENTATION</span>
+            <div class="q-title">A <em>woman</em> in entrepreneurship who <em>shipped</em>.</div>
+            <div class="q-body">Often the only woman on national hackathon stages. Leading Rutgers' first engineering accelerator. Representation isn't a talking point — it's a <strong>recruitment funnel</strong>. Women fellows need to see this is possible. I am the proof.</div>
+        </div>
+
+        <div class="q-card reveal">
+            <span class="q-badge">04 · NETWORK</span>
+            <div class="q-title">Already <em>plugged in</em>.</div>
+            <div class="q-body">Pipelines already built with <strong>NSF, Columbia, a16z, YC-backed founders</strong>, industry operators. MTC. RES. Google, Goldman, NASA colleagues. RSVP doesn't need me to <em>find</em> a network. I'm bringing one in.</div>
+        </div>
+    </div>
+</section>
+
+<!-- HANDOFF / GREY MATTER -->
+<section class="handoff">
+    <div class="handoff-inner">
+        <div class="handoff-left">
+            <div class="handoff-label">§ G · HAND-OFF PROOF</div>
+            <div class="handoff-big">
+                I've built and<br>
+                <span class="out">HANDED OFF</span><br>
+                <em>before.</em>
+            </div>
+        </div>
+
+        <div class="handoff-body">
+            <p style="font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(22px,3vw,30px);line-height:1.25;margin-bottom:24px;">In two semesters, I founded the Grey Matter Society at Rutgers — a Yale School of Medicine–affiliated neuroscience & AI org — and built it into a functioning ecosystem.</p>
+
+            <div class="handoff-metrics">
+                <div class="hm-cell"><div class="hm-val">150+</div><div class="hm-lbl">Members S1</div></div>
+                <div class="hm-cell"><div class="hm-val">$5K</div><div class="hm-lbl">RUSA + Sponsors</div></div>
+                <div class="hm-cell"><div class="hm-val">200</div><div class="hm-lbl">Gala Sold Out</div></div>
+                <div class="hm-cell"><div class="hm-val">1</div><div class="hm-lbl">Accelerator Spun Up</div></div>
+            </div>
+
+            <p>I ran hackathons, conferences, workshops, logistics, RUSA allocations — and presided over a healthcare startup accelerator inside the org. Sold-out galas. Framework built for 150+ undergraduate chapters with Yale.</p>
+            <p>Then I <strong style="background:var(--yellow);padding:0 4px;">stepped down</strong> from the founding presidency.</p>
+
+            <div class="handoff-quote">
+                "The framework is built. The structure is in place. The next chapter needs new leadership — and I need to focus where I can have outsized impact. That's the founder-move, not the exit."
+            </div>
+
+            <p style="margin-top:28px;font-family:'Unbounded',sans-serif;font-weight:800;font-size:clamp(18px,2.4vw,28px);line-height:1.15;letter-spacing:-0.02em;text-transform:uppercase;">
+                I'm making the same case for RSVP —<br>
+                except <em style="font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--red);text-transform:none;">in reverse</em>.<br>
+                Not leaving something to focus on RSVP.<br>
+                <span style="background:var(--ink);color:var(--yellow);padding:0 0.15em;">Choosing RSVP</span> because it's where my next build should happen.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ENDORSEMENTS -->
+<section class="endorse">
+    <div class="sec-header">
+        <div class="sec-label red">§ H · ENDORSEMENTS</div>
+        <h2 class="sec-title">What the <em>people who've worked with me</em> say.</h2>
+    </div>
+
+    <div class="e-grid">
+        <div class="e-card">
+            <span class="e-stamp-v">Certified</span>
+            <div class="e-mark">"</div>
+            <div class="e-quote placeholder">[Endorsement — RSVP Cohort 6 peer or alum on working alongside Azra through the fellowship. 2–3 sentences on operating style and impact.]</div>
+            <div class="e-sign">
+                <div class="e-sign-name">[Full Name]</div>
+                <div class="e-sign-role">RSVP COHORT 6 FELLOW</div>
+            </div>
+        </div>
+
+        <div class="e-card">
+            <span class="e-stamp-v">Verified</span>
+            <div class="e-mark">"</div>
+            <div class="e-quote placeholder">[Endorsement — Venture Lab founder speaking to how Azra ran the accelerator. Focus: mentorship depth, operator quality, showing up.]</div>
+            <div class="e-sign">
+                <div class="e-sign-name">[Founder Name]</div>
+                <div class="e-sign-role">VENTURE LAB · FALL '25</div>
+            </div>
+        </div>
+
+        <div class="e-card">
+            <span class="e-stamp-v">On Record</span>
+            <div class="e-mark">"</div>
+            <div class="e-quote placeholder">[Endorsement — current RSVP board member or recruitment co-lead on Azra's recruitment coordinator work. Focus: rigor, judgment, volunteer ethic.]</div>
+            <div class="e-sign">
+                <div class="e-sign-name">[Board Member]</div>
+                <div class="e-sign-role">RSVP LEADERSHIP</div>
+            </div>
+        </div>
+
+        <div class="e-card">
+            <span class="e-stamp-v">Co-Founder</span>
+            <div class="e-mark">"</div>
+            <div class="e-quote placeholder">[Endorsement — a co-founder from the RSVP room (Yusuf, Kavish, or a Launch Circuit co-founder) on what it's like to build alongside Azra. This is the most impactful quote on the page — make it specific.]</div>
+            <div class="e-sign">
+                <div class="e-sign-name">[Co-Founder]</div>
+                <div class="e-sign-role">AEROBIN · LAUNCH CIRCUIT · HC ACCELERATOR</div>
+            </div>
+        </div>
+
+        <div class="e-card">
+            <span class="e-stamp-v">Handoff</span>
+            <div class="e-mark">"</div>
+            <div class="e-quote placeholder">[Endorsement — Grey Matter successor or co-founder speaking to Azra's hand-off and founder maturity.]</div>
+            <div class="e-sign">
+                <div class="e-sign-name">[Successor]</div>
+                <div class="e-sign-role">GREY MATTER SOCIETY</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CLOSER -->
+<section class="closer">
+    <div class="closer-top">
+        <span class="cl-pill">EPILOGUE · THE ASK</span>
+        <span class="cl-pill yellow">VOTE · BANO / 26</span>
+    </div>
+
+    <h2 class="closer-big">
+        LET'S<br>
+        <span class="carp">Carpe Diem.</span><br>
+        <span class="out">TOGETHER.</span>
+    </h2>
+
+    <p class="closer-sub">
+        RSVP put me in a room with a group of strangers. We left as friends, then co-founders, then a founding team — two startups, one accelerator, one career at Google HQ. Cohort 7 and Cohort 8 deserve the same room. I'm asking for the title so I can make sure they get it.
+    </p>
+
+    <div class="closer-sign">— Azra</div>
+</section>
+
+<div class="footer">
+    <div>AZRA BANO · <span class="red">/</span> FOR PRESIDENT · ROAD TO SILICON V/ALLEY</div>
+    <div><span class="yellow">→</span> AZRA.BANO@RUTGERS.EDU</div>
+</div>
+
+<script>
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.classList.add('visible');
+                io.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    document.querySelectorAll('.mf-line-1, .mf-line-2, .mf-line-3').forEach((el, i) => {
+        el.style.transitionDelay = `${i * 0.12}s`;
+    });
+</script>
+
+</body>
+</html>
